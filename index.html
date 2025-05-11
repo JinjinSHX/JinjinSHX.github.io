@@ -1,172 +1,61 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Jinjin_SHX - blog</title><meta name="author" content="Jinjin_SHX"><meta name="copyright" content="Jinjin_SHX"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="每日学习记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jinjin_SHX">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Jinjin_SHX">
-<meta property="og:description" content="每日学习记录">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
-<meta property="article:author" content="Jinjin_SHX">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
-    (() => {
-      
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
+<!DOCTYPE html>
+<html>
+<head>
+    <title>扫描二维码查看爱心动画</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
-        return value
-      }
-    }
 
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
         }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
-        }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!false && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
-  
-      
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
 
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
+        h1 {
+            color: #ff3366;
+            margin-bottom: 30px;
+        }
 
-      const theme = saveToLocal.get('theme')
-    
-          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
-        
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
-    
-      
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-  
-    })()
-  </script><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'null',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyloadPlugin: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Jinjin_SHX',
-  isHighlightShrink: false,
-  isToc: false,
-  pageType: 'home'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Jinjin_SHX</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">Jinjin_SHX</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/04/01/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" title="常用函数总结">常用函数总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-04-01T10:27:33.000Z" title="发表于 2025-04-01 18:27:33">2025-04-01</time></span></div><div class="content">常用函数总结map() 函数1. 语法1map(function, iterable, ......)  2.  描述map() 会根据提供的函数对于指定序列做映射： 会将所有的 iterable 值，执行 function 函数，之后将所有返回值作为一个新列表返回，类型为 map。 3. 参数 function ：需要执行的函数 iterable ：执行 function 的所有参数  4. 示例使用map函数对列表中的所有元素计算其平方1234567# 使用map函数对列表中的所有元素计算其平方l = [1, 2, 3, 4, 5]ans = map(lambda x: x **2, l)for i in ans:    print(ans, end=&quot; &quot;)# 输出 1 4 9 16 25   map函数与input函数结合123456# map函数与input函数结合使用ans = list(map(int, input().split()))for i in ans:    print(i, end=&quot; &quot;)#...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/04/01/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AB%9E%E8%B5%9B%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" title="蓝桥杯竞赛知识总结">蓝桥杯竞赛知识总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-04-01T08:58:23.000Z" title="发表于 2025-04-01 16:58:23">2025-04-01</time></span></div><div class="content">语法基础字符串1. 定义在python中，字符串使用 &quot;&quot; 或者 &#39;&#39; 括起来，两者并没有什么区别。 12var1 = &#x27;Hello world&#x27;var2 = &#x27;hello world!&#x27;    2. 索引字符串的索引值：  从左往右 ： 0  开始 从右往左 ： -1 开始   3. 切片str[start:end:step]  start : 起始位置，包含 end ： 终点位置，不包含 step ：步长  1234567891011121314str = &#x27;Runoob&#x27;# 表示整个str字符串s1 = str[:]# 截取字符串str 0位置（包含） -&gt; 3位置（不包含）s2 = str[0:3]# 截取，并且步长为2s3 = str[0:6:2]print(s1, s2, s3)# 结果为 Runoob Run Rno    4. 拼接 * ， 使用 str * n 可以将字符串 str 拼接 n 次 + ，...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/26/Reinforcement-Learning/" title="Reinforcement Learning">Reinforcement Learning</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-26T08:37:30.000Z" title="发表于 2025-03-26 16:37:30">2025-03-26</time></span></div><div class="content">多智能体强化学习基本概念1. 随机变量   随机变量 X ，他的值取决于一个随机事件的结果。   如抛硬币：   ​	X 的可能取值只有两个 0 or 1 。   ​	P(x = 0) = 0.5   ​	P(x = 1) = 0.5  2. 概率密度函数 某一个变量在确定取值点附近的可能性。  对于连续的概率分布，对其做定积分最后的到的值为1。  对于离散的概率分布，对其所有可能性做加和最后的值为1。    3. 期望4. 随机抽样使用 numpy.random.choice() 函数来进行一次随机抽样： 函数参数解释：  a ：一维数组或者整数 size ：单数或者元组。 单数表示输出这个数量的一维数组 元组   replace  ：输出能否重复 False ：不能 True ：可以   p ：None 或者数组 None ：概率相同 数组：a 的相应概率    123from numpy.random import choicesamples = choice(a:[&quot;R&quot;, &quot;G&quot;, &quot;B&quot;],...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/25/%E5%85%B3%E4%BA%8Ehexo%E5%A6%82%E4%BD%95%E4%B8%8A%E4%BC%A0%E6%96%87%E7%AB%A0/" title="关于hexo如何上传，修改，删除文章">关于hexo如何上传，修改，删除文章</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-25T12:54:59.000Z" title="发表于 2025-03-25 20:54:59">2025-03-25</time></span></div><div class="content">关于hexo如何上传文章 hexo 上的文章在本地可以采用markdown进行编辑  在hexo根目录位置进入Git Bash Here，之后键入如下命令即可创建一个本地的空白文档。 1hexo new &quot;文章名称&quot;  eg：  在编写完成内容后键入如下命令，即可生成静态文件 。 1hexo generate    eg：  最后一步，进行网站部署： 1hexo deploy  eg:  此时进行网站刷新即可看到上传的文章以及内容。 关于修改已经上传的文件 现在本地修改markdown文件。 运行 hexo clean 去清理已经生成的静态文件（public）和缓存文件（db.json）。 运行 hexo generate 重新生成静态文件。 运行 hexo deploy 进行重新部署。 刷新网页即可看到文章已经完成修改。  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/25/text/" title="text">text</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-25T12:15:00.000Z" title="发表于 2025-03-25 20:15:00">2025-03-25</time></span></div><div class="content">123546测试内容是否会上线网站。 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/25/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-25T06:30:35.380Z" title="发表于 2025-03-25 14:30:35">2025-03-25</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Jinjin_SHX</div><div class="author-info-description">每日学习记录</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/01/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" title="常用函数总结">常用函数总结</a><time datetime="2025-04-01T10:27:33.000Z" title="发表于 2025-04-01 18:27:33">2025-04-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/01/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AB%9E%E8%B5%9B%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" title="蓝桥杯竞赛知识总结">蓝桥杯竞赛知识总结</a><time datetime="2025-04-01T08:58:23.000Z" title="发表于 2025-04-01 16:58:23">2025-04-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/26/Reinforcement-Learning/" title="Reinforcement Learning">Reinforcement Learning</a><time datetime="2025-03-26T08:37:30.000Z" title="发表于 2025-03-26 16:37:30">2025-03-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/25/%E5%85%B3%E4%BA%8Ehexo%E5%A6%82%E4%BD%95%E4%B8%8A%E4%BC%A0%E6%96%87%E7%AB%A0/" title="关于hexo如何上传，修改，删除文章">关于hexo如何上传，修改，删除文章</a><time datetime="2025-03-25T12:54:59.000Z" title="发表于 2025-03-25 20:54:59">2025-03-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/25/text/" title="text">text</a><time datetime="2025-03-25T12:15:00.000Z" title="发表于 2025-03-25 20:15:00">2025-03-25</time></div></div></div></div><div class="card-widget card-archives">
-    <div class="item-headline">
-      <i class="fas fa-archive"></i>
-      <span>归档</span>
-      
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            color: #ccc;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>扫描二维码查看爱心动画</h1>
+        <div class="qr-code">
+            <!-- 这里使用在线二维码生成服务 -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://jinjinshx.github.io/heart.html" alt="QR Code">
+        </div>
+        <div class="instructions">
+            <p>使用手机扫描上方二维码</p>
+            <p>即可查看动态爱心效果</p>
+        </div>
     </div>
-  
-    <ul class="card-archive-list">
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/04/">
-            <span class="card-archive-list-date">
-              四月 2025
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/03/">
-            <span class="card-archive-list-date">
-              三月 2025
-            </span>
-            <span class="card-archive-list-count">4</span>
-          </a>
-        </li>
-      
-    </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-04-05T11:13:52.008Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Jinjin_SHX</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+</body>
+</html> 
